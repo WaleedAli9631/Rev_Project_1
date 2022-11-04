@@ -6,10 +6,12 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
+import javax.swing.*;
 import java.time.Duration;
 import java.util.List;
 import java.util.Random;
@@ -24,17 +26,17 @@ public class DefectStatusSteps {
     @Then("The tester {string} can can see only defects assigned to them")
     public void theTesterCanCanSeeOnlyDefectsAssignedToThem(String name) throws InterruptedException {
         List<WebElement> myDefects = Runner.driver.findElements(By.xpath("//*/li"));
+
+        Runner.wait.until(ExpectedConditions.visibilityOfAllElements(myDefects));
         for (WebElement element : myDefects
         ) {
-            Runner.wait.until(ExpectedConditions.visibilityOf(element));
             element.click();
-            Thread.sleep(Duration.ofSeconds(1));
+        Thread.sleep(Duration.ofSeconds(1));
         }
         List<WebElement> assignedTo = Runner.driver.findElements(By.xpath("//div/p[5]"));
         for (WebElement element : assignedTo
         ) {
             Assert.assertTrue(element.getText().contains(name));
-            Thread.sleep(Duration.ofSeconds(1));
 
         }
     }

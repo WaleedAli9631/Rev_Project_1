@@ -16,10 +16,6 @@ import java.time.Duration;
 import java.util.Random;
 
 public class MatrixSteps {
-//    @Given("A manager is on their home page")
-//    public void aManagerIsOnTheirHomePage() {
-//        throw new io.cucumber.java.PendingException();
-//    }
 
     @Then("A manager can pull up a form to make a new matrix")
     public void aManagerCanPullUpAFormToMakeANewMatrix() {
@@ -100,8 +96,6 @@ public class MatrixSteps {
 
     @When("A manager or tester adds or removes defects")
     public void aManagerOrTesterAddsOrRemovesDefects() throws InterruptedException {
-        //need to verify that it actually added
-
         Runner.matricesPage.firstEdit.click();
         Runner.matricesPage.defectAddButton.click();
         Runner.matricesPage.defectRemoveButton.click();

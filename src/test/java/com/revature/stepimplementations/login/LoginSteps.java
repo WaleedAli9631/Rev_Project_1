@@ -4,13 +4,9 @@ import com.revature.runners.Runner;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import java.lang.reflect.Array;
-import java.time.Duration;
 
 public class LoginSteps {
     @Given("The employee is on the login page")
@@ -31,12 +27,6 @@ public class LoginSteps {
     @When("The employee clicks on the login button")
     public void theEmployeeClicksOnTheLoginButton() throws InterruptedException {
         Runner.loginPage.loginButton.click();
-//        try {
-//            Runner.wait.until(ExpectedConditions.titleContains("Home"));
-//        }catch (Exception e){
-//
-//        }
-        //Thread.sleep(Duration.ofSeconds(1));
     }
 
     @Then("The employee should see an alert saying they have the wrong password")

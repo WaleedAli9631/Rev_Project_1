@@ -7,15 +7,17 @@ import io.cucumber.testng.CucumberOptions;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import javax.swing.*;
 import java.time.Duration;
 
 @CucumberOptions(features = "classpath:features", glue = "com.revature.stepimplementations")
 
-public class Runner extends AbstractTestNGCucumberTests  {
+public class Runner extends AbstractTestNGCucumberTests {
     public static WebDriver driver;
     public static LoginPage loginPage;
     public static HomePage homePage;
@@ -29,24 +31,28 @@ public class Runner extends AbstractTestNGCucumberTests  {
     public static WebDriverWait wait;
 
     public static String titleString;
-    static public void quickLogin(String username,String password) throws InterruptedException {
+    public static Actions action;
+    static public void quickLogin(String username, String password) throws InterruptedException {
         LoginSteps loginSteps = new LoginSteps();
 
         loginSteps.theEmployeeTypesInIntoTheUsernameInput(username);
         loginSteps.theEmployeeTypesInIntoThePasswordInput(password);
         loginSteps.theEmployeeClicksOnTheLoginButton();
     }
+
     static public void quickLogOut() throws InterruptedException {
         Runner.homePage.logoutButton.click();
         Thread.sleep(Duration.ofSeconds(1));
     }
+
     @BeforeMethod
-    public void setup(){
+    public void setup() {
         WebDriverManager.chromedriver().setup();
 
         driver = new ChromeDriver();
         wait = new WebDriverWait(Runner.driver, Duration.ofSeconds(2));
-        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+
+        action = new Actions(driver);
 
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
@@ -57,7 +63,7 @@ public class Runner extends AbstractTestNGCucumberTests  {
     }
 
     @AfterMethod
-    public void cleanup(){
+    public void cleanup() {
         driver.quit();
     }
 }

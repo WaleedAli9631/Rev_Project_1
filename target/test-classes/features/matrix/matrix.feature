@@ -44,17 +44,4 @@ Feature: Matrix
             | "g8tor"     | "chomp!"  |
             | "ryeGuy"     | "coolbeans"|
 
-#    Scenario: Update Defects
-#        Given The manager clicks on Matrices
-#        Given A manager or tester has selected a matrix
-#        When A manager or tester adds or removes defects
-#        When A manager or tester confirms their changes
-#        Then Then the matrix should saved
-#
-#    Scenario: Update Test Cases
-#        Given The manager clicks on Matrices
-#        Given A manager or tester has selected a matrix
-#        When A manager or tester adds or removes Test Cases
-#        When A manager or tester confirms their changes
-#        Then Then the matrix should saved
 
